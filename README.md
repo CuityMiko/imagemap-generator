@@ -22,3 +22,13 @@
 
 图片太大时拖拽会出错,建议图片不要太大,如果图片太大.推荐上传到服务器后输入绝对地址到输入框
 
+
+##  maphilight使用
+
+在页面添加以下代码可以查看图片热区
+
+    <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+    <script src="https://rawgit.com/qiu-deqing/imagemap-generator/master/js/jquery.maphilight.min.js"></script>
+    <script>
+      $('img[usemap]').maphilight();
+    </script>
