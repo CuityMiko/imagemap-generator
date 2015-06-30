@@ -187,12 +187,18 @@ $(document).ready(function(){
 	});
 
 	// Imagemap Generator Buttons
-	$('.clearButton').click(function() {
-		$('#coordsText').val('');
-	});
+	$('.clearButton').click(addArea);
 
-	// ...
-	$('.clearCurrentButton').click(function() {
+	function addArea() {
+		console.log('addarea()')
+		$('#coordsText').val('');
+	}
+
+	// 删除最后一个图形
+	$('.clearCurrentButton').click(removeLast);
+
+	function removeLast() {
+		console.log('removelast()')
 		$('#coordsText').val('');
 		$('#mapContainer').find('area:last').remove();
 		hightlight();
@@ -204,7 +210,21 @@ $(document).ready(function(){
 		var lastCoords = tmpArr[tmpArr.length - 1].split('/>')[0];
 		textarea = textareaVal.replace('<area' + lastCoords+'/>\n    ', '');
 		$('#areaText').val(textarea);
-	});
+	}
+
+	// 按键支持
+	document.addEventListener('keydown', function (e) {
+		console.log(e.keyCode);
+		switch (e.keyCode) {
+			case 65:
+				addArea();
+				break;
+
+			case 90:
+				removeLast();
+				break;
+		}
+	}, false);
 
 	// ...
 	$('.clearAllButton').click(function() {
